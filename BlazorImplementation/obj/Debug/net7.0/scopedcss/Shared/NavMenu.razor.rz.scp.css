@@ -1,0 +1,118 @@
+.navbar-toggler[b-01vzxudcad] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-01vzxudcad] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-01vzxudcad] {
+    font-size: 1.1rem;
+}
+
+.oi[b-01vzxudcad] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-01vzxudcad] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-01vzxudcad] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-01vzxudcad] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-01vzxudcad]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-01vzxudcad]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-01vzxudcad]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-01vzxudcad] {
+        display: none;
+    }
+
+    .collapse[b-01vzxudcad] {
+        display: block;
+    }
+    
+    .nav-scrollable[b-01vzxudcad] {
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+
+/*.drawer-container {
+    margin: 30px auto;
+    width: 70%;
+}
+
+.k-drawer-container {
+    position: relative;
+    width: 100%;
+}
+
+.custom-toolbar {
+    width: 100%;
+    background-color: #f6f6f6;
+    line-height: 10px;
+    border-bottom: inset;
+    border-bottom-width: 1px;
+    padding: 3px 8px;
+    color: #656565;
+}
+
+.mail-box {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.page ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page li {
+    font-size: 20px;
+    background: 0 0;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-color: rgba(33, 37, 41, 0.125);
+    border-style: solid;
+    line-height: 1.5em;
+    padding: 1.09em .84em 1.23em .84em;
+}
+
+    .page li:last-child {
+        border: 0;
+    }
+
+    .page li h6 {
+        border-bottom: none;
+        padding-bottom: 8px;
+    }*/

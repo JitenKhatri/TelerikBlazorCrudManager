@@ -1,0 +1,34 @@
+﻿@inherits LayoutComponentBase
+
+<TelerikRootComponent>
+<PageTitle>BlazorImplementation</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        <div class="page">
+            <div class="sidebar">
+                <NavMenu />
+            </div>
+
+            <main>
+                <div class="top-row px-4">
+                        <h4>@(UserDisplayName(context.User.Claims.ToList())) <span class="mx-4">@(context.User.Claims.ToList().Where(_ => _.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Select(_ => _.Value).FirstOrDefault()) </span></h4>
+                    <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+                        <TelerikButton Icon="@(SvgIcon.Logout)" Class="mx-3" OnClick="(() => Logout())"></TelerikButton>
+                </div>
+
+                <article class="content px-4">
+                    <ErrorBoundary>
+                        @Body
+                    </ErrorBoundary>
+                </article>
+            </main>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <BlazorImplementation.Pages.RedirectToLogin/>
+    </NotAuthorized>
+</AuthorizeView>
+<Notification/>
+<LoaderComponent />
+</TelerikRootComponent>

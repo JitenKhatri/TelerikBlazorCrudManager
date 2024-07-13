@@ -1,0 +1,11 @@
+﻿@layout EmptyLayout
+@inject NavigationManager _navigation
+@attribute [AllowAnonymous]
+
+<h3>Redirecting to Login ..... ..... .....</h3>
+@code {
+    protected override void OnInitialized()
+    {
+        _navigation.NavigateTo("/login",forceLoad :true);
+    }
+}

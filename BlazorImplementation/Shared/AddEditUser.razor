@@ -1,0 +1,133 @@
+﻿@using BlazorImplementation.Models
+
+@* <div class="register-container">
+    <h3>Register</h3> *@
+@* @if (IsVisible)
+{ *@
+@*     <TelerikWindow Centered="true" @bind-Visible="@IsVisible" @Resizable="false" Modal="true" CloseOnOverlayClick="true">
+        <WindowActions>
+        <WindowAction Name="Close" Hidden="false" OnClick="OnCancelform" />
+    </WindowActions>
+    <WindowTitle>@title</WindowTitle>
+        <WindowContent> *@
+    <EditForm Model="@User" OnValidSubmit="HandleValidSubmit" class="k-form k-form-md">
+        <FluentValidationValidator />
+
+        <div class="form-group px-3">
+            <TelerikFloatingLabel Text="First Name">
+                <div class="k-form-field-wrap">
+                    <TelerikTextBox @bind-Value="User.FirstName" Class="form-control" AutoComplete="on" Name="FirstName" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.FirstName)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Last Name">
+                <div class="k-form-field-wrap">
+                    <TelerikTextBox @bind-Value="User.LastName" Class="form-control" AutoComplete="on" Name="LastName" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.LastName)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Date Of Birth">
+                <div class="k-form-field-wrap">
+                    <TelerikDatePicker @bind-Value="User.DateOfBirth" Class="form-control" Format="dd/MM/yyyy" AdaptiveMode="@AdaptiveMode.Auto">
+                        <DatePickerFormatPlaceholder Year="year" Month="month" Day="day"></DatePickerFormatPlaceholder>
+                    </TelerikDatePicker>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.DateOfBirth)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Phone Number">
+                <div class="k-form-field-wrap">
+                    <TelerikTextBox @bind-Value="User.PhoneNumber" Class="form-control" AutoComplete="on" Name="PhoneNumber" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.PhoneNumber)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Username">
+                <div class="k-form-field-wrap">
+                    <TelerikTextBox @bind-Value="User.UserName" Class="form-control" AutoComplete="on" Name="UserName" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.UserName)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Password" Class="custom-label">
+                <div class="k-form-field-wrap d-flex flex-row">
+                    <TelerikTextBox Class="form-control" Password="HidePassword" Name="Password" @bind-Value="User.Password" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                    <TelerikButton OnClick="@RevealPassword" class="mx-1" Icon="@SvgIcon.Unlock" ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" ButtonType="@(ButtonType.Button)"></TelerikButton>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.Password)" />
+        </div>
+
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Confirm Password" Class="custom-label">
+                <div class="k-form-field-wrap d-flex flex-row">
+                    <TelerikTextBox Class="form-control" Password="HideConfirmPassword" Name="ConfirmPassword" @bind-Value="User.ConfirmPassword" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                    <TelerikButton OnClick="@RevealConfirmPassword" class="mx-1" Icon="@SvgIcon.Unlock" ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" ButtonType="@(ButtonType.Button)"></TelerikButton>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.ConfirmPassword)" />
+        </div>
+    <div class="form-group px-3">
+            <TelerikFloatingLabel Text="Role" Class="custom-label">
+                <div class="k-form-field-wrap">
+                    <TelerikDropDownList Data="@Roles" @bind-Value="@User.Role" DefaultText="Please Select" Size="@ThemeConstants.DropDownList.Size.Small" FillMode="@ThemeConstants.DropDownList.FillMode.Solid">
+                        <DropDownListSettings>
+                            <DropDownListPopupSettings Height="75px"></DropDownListPopupSettings>
+                        </DropDownListSettings>
+                    </TelerikDropDownList>
+
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => User.Role)" />
+        </div>
+    <div class="form-group px-3">
+        <TelerikFloatingLabel Text="Country" Class="custom-label">
+            <div class="k-form-field-wrap">
+                <TelerikDropDownList Data="@CountryList" TextField="@nameof(CountryModel.CountryName)" ValueField="@nameof(CountryModel.CountryId)"
+                                     Value="@User.CountryId" DefaultText="Please Select" ValueChanged="@( (long c) => OnCountrySelect(c) )" ValueExpression="()=> User.CountryId"
+                                     Size="@ThemeConstants.DropDownList.Size.Small" FillMode="@ThemeConstants.DropDownList.FillMode.Solid">
+                    <DropDownListSettings>
+                        <DropDownListPopupSettings Height="75px"></DropDownListPopupSettings>
+                    </DropDownListSettings>
+                </TelerikDropDownList>
+
+            </div>
+        </TelerikFloatingLabel>
+        <ValidationMessage For="@(() => User.CountryId)" />
+    </div>
+    <div class="form-group px-3">
+        <TelerikFloatingLabel Text="City" Class="custom-label">
+            <div class="k-form-field-wrap">
+                <TelerikDropDownList Data="@CityList" TextField="@nameof(CityModel.CityName)" ValueField="@nameof(CityModel.CityId)"
+                                     @bind-Value="@User.CityId" DefaultText="Please Select" Enabled="@( User.CountryId > 0 )"
+                                     Size="@ThemeConstants.DropDownList.Size.Small" FillMode="@ThemeConstants.DropDownList.FillMode.Solid">
+                    <DropDownListSettings>
+                        <DropDownListPopupSettings Height="75px"></DropDownListPopupSettings>
+                    </DropDownListSettings>
+                </TelerikDropDownList>
+
+            </div>
+        </TelerikFloatingLabel>
+        <ValidationMessage For="@(() => User.CountryId)" />
+    </div>
+        <div class="mt-3 d-flex flex-row px-3 pb-3">
+            <TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" Class="mt-md" ButtonType="@ButtonType.Submit">Save</TelerikButton>
+            <TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Light)" Class="mx-2" ButtonType="@ButtonType.Button" @onclick="OnCancelform">Cancel</TelerikButton>
+        </div>
+    </EditForm>
+@*     </WindowContent>
+</TelerikWindow> *@
+@* } *@
+@* </div> *@

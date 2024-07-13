@@ -1,0 +1,49 @@
+﻿@page "/counter"
+
+@attribute [Authorize(Roles = "Admin")]
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<div class="bg-success" @attributes="Attributes">Inspect to see the attributes</div>
+
+<ul>
+@foreach(var item in Items)
+{
+    <li @key="@item">@item</li>
+}
+</ul>
+
+<button class="btn btn-dark" @onclick="Add">Add</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    Dictionary<string, object> Attributes { get; set; } = new()
+    {
+        {"example-string","Blazor 1234"},
+        {"example-int",10}
+    };
+
+
+    List<int> Items = new List<int> { 0, 1 };
+
+    private void Add()
+    {
+        Items.Add(Items.Count);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitializedAsync();
+    }
+}

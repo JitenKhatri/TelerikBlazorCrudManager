@@ -1,0 +1,46 @@
+.register-container[b-05dl6vwrx0] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*height: 100vh;*/ /* Full height of the viewport */
+}
+
+.details-container[b-05dl6vwrx0] {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.register-container h3[b-05dl6vwrx0] {
+    margin-bottom: 1rem;
+}
+
+.error-message[b-05dl6vwrx0] {
+    min-height: 3rem; /* Adjust as needed to fit your error message */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group[b-05dl6vwrx0] {
+    width: 100%;
+    min-width: 800px;
+}
+
+button[b-05dl6vwrx0] {
+    width: 100%;
+    min-width: 800px;
+    margin-top: 1rem;
+}
+
+.password-container[b-05dl6vwrx0] {
+    display: flex; /* Ensures horizontal alignment */
+    align-items: center; /* Vertically aligns button with input */
+}
+
+.text-bold[b-05dl6vwrx0] {
+    font-weight: bolder;
+}

@@ -1,0 +1,46 @@
+.login-container[b-wtcolul1vs] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+    .login-container h3[b-wtcolul1vs] {
+        margin-bottom: 1rem;
+    }
+
+.error-message[b-wtcolul1vs] {
+    min-height: 3rem; /* Adjust as needed to fit your error message */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group[b-wtcolul1vs] {
+    width: 100%;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+/*button {
+    width: 100%;
+    min-width: 400px;
+    max-width: 800px;*/ /* Adjust as needed */
+    /*margin-top: 1rem;
+}*/
+
+.custom-label[b-wtcolul1vs] {
+    width: 100%;
+    color: #2fa4e7;
+}
+
+.password-container[b-wtcolul1vs] {
+  display: flex; /* Ensures horizontal alignment */
+  align-items: center; /* Vertically aligns button with input */
+}
+
+.reveal-password-button[b-wtcolul1vs] {
+  margin-left: 5px; /* Adjust spacing as needed */
+}

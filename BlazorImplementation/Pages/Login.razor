@@ -1,0 +1,39 @@
+﻿@page "/login"
+@layout EmptyLayout
+<div class="login-container">
+    <h3>Login</h3>
+    <EditForm Model="@tokenModel" OnValidSubmit="SubmitLogin" class="k-form k-form-md">
+        <FluentValidationValidator/>
+        <div class="error-message">
+            @if (!string.IsNullOrEmpty(APIErrorMessage))
+            {
+                <div class="d-flex justify-center">
+                    <h3 class="text-danger">@APIErrorMessage</h3>
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <TelerikFloatingLabel Text="Username" Class="custom-label">
+                                <div class="k-form-field-wrap">
+                    <TelerikTextBox @bind-Value="tokenModel.Email" Class="form-control" AutoComplete="on" Name="Email" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                                    </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => tokenModel.Email)" />
+        </div>
+
+        <div class="form-group">
+            <TelerikFloatingLabel Text="Password" Class="custom-label">
+                <div class="k-form-field-wrap d-flex flex-row">
+                    <TelerikTextBox Class="form-control" Password="HidePassword" Name="Password" @bind-Value="tokenModel.Password" ValidateOn="@ValidationEvent.Change"></TelerikTextBox>
+                    <TelerikButton OnClick="@RevealPassword" Class="mx-1" Icon="@SvgIcon.Unlock" ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" ButtonType="@(ButtonType.Button)"></TelerikButton>
+                </div>
+            </TelerikFloatingLabel>
+            <ValidationMessage For="@(() => tokenModel.Password)" />
+        </div>
+        <div class="mb-3">
+            <TelerikButton ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)" Class="mt-md" ButtonType="@ButtonType.Submit">Login</TelerikButton>
+        </div>
+        <NavLink href="register">Don't Have an account ? Register!'</NavLink>
+    </EditForm>
+
+</div>

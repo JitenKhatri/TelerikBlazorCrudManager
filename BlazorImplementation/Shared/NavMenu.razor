@@ -1,0 +1,24 @@
+﻿@using BlazorImplementation.Models
+
+<TelerikButton Title="Navigation menu" OnClick="ToggleNavMenu" Icon="@(SvgIcon.Menu)"></TelerikButton>
+
+<div class="container-fluid">
+    <div class="@NavMenuCssClass">
+        <TelerikTreeView @ref="TelerikTreeViewRef" Data="@navigationItems"
+                         OnExpand="@LoadChildren" Size="@ThemeConstants.TreeView.Size.Large" SelectionMode="@TreeViewSelectionMode.Single" OnItemClick="@onItemClick">
+        <TreeViewBindings>
+                <TreeViewBinding IdField="@nameof(NavigationItem.Id)" HasChildrenField="@nameof(NavigationItem.HasChildren)" UrlField="@nameof(NavigationItem.Url)" TextField="@nameof(NavigationItem.Text)" ItemsField="@nameof(NavigationItem.Children)" IconField="@nameof(NavigationItem.Icon)"></TreeViewBinding>
+        </TreeViewBindings>
+        </TelerikTreeView>
+    </div>
+</div>
+
+<style>
+    .k-treeview {
+        color: #fafafa;
+    }
+
+    .k-treeview-leaf.k-selected {
+        background-color: #f358ff;
+    }
+</style>

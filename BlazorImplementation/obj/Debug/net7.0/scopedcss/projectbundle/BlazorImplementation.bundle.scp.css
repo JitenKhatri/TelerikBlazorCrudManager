@@ -1,0 +1,285 @@
+/* _content/BlazorImplementation/Pages/Login.razor.rz.scp.css */
+.login-container[b-wtcolul1vs] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+    .login-container h3[b-wtcolul1vs] {
+        margin-bottom: 1rem;
+    }
+
+.error-message[b-wtcolul1vs] {
+    min-height: 3rem; /* Adjust as needed to fit your error message */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group[b-wtcolul1vs] {
+    width: 100%;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+/*button {
+    width: 100%;
+    min-width: 400px;
+    max-width: 800px;*/ /* Adjust as needed */
+    /*margin-top: 1rem;
+}*/
+
+.custom-label[b-wtcolul1vs] {
+    width: 100%;
+    color: #2fa4e7;
+}
+
+.password-container[b-wtcolul1vs] {
+  display: flex; /* Ensures horizontal alignment */
+  align-items: center; /* Vertically aligns button with input */
+}
+
+.reveal-password-button[b-wtcolul1vs] {
+  margin-left: 5px; /* Adjust spacing as needed */
+}
+/* _content/BlazorImplementation/Pages/Register.razor.rz.scp.css */
+.register-container[b-05dl6vwrx0] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*height: 100vh;*/ /* Full height of the viewport */
+}
+
+.details-container[b-05dl6vwrx0] {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.register-container h3[b-05dl6vwrx0] {
+    margin-bottom: 1rem;
+}
+
+.error-message[b-05dl6vwrx0] {
+    min-height: 3rem; /* Adjust as needed to fit your error message */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group[b-05dl6vwrx0] {
+    width: 100%;
+    min-width: 800px;
+}
+
+button[b-05dl6vwrx0] {
+    width: 100%;
+    min-width: 800px;
+    margin-top: 1rem;
+}
+
+.password-container[b-05dl6vwrx0] {
+    display: flex; /* Ensures horizontal alignment */
+    align-items: center; /* Vertically aligns button with input */
+}
+
+.text-bold[b-05dl6vwrx0] {
+    font-weight: bolder;
+}
+/* _content/BlazorImplementation/Shared/MainLayout.razor.rz.scp.css */
+.page[b-tzrnxu8a4s] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-tzrnxu8a4s] {
+    flex: 1;
+}
+
+.sidebar[b-tzrnxu8a4s] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-tzrnxu8a4s] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-tzrnxu8a4s]  a, .top-row .btn-link[b-tzrnxu8a4s] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-tzrnxu8a4s] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-tzrnxu8a4s] {
+        display: none;
+    }
+
+    .top-row.auth[b-tzrnxu8a4s] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-tzrnxu8a4s], .top-row .btn-link[b-tzrnxu8a4s] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-tzrnxu8a4s] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-tzrnxu8a4s] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-tzrnxu8a4s] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row[b-tzrnxu8a4s], article[b-tzrnxu8a4s] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* _content/BlazorImplementation/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-01vzxudcad] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-01vzxudcad] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-01vzxudcad] {
+    font-size: 1.1rem;
+}
+
+.oi[b-01vzxudcad] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-01vzxudcad] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-01vzxudcad] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-01vzxudcad] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-01vzxudcad]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-01vzxudcad]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-01vzxudcad]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-01vzxudcad] {
+        display: none;
+    }
+
+    .collapse[b-01vzxudcad] {
+        display: block;
+    }
+    
+    .nav-scrollable[b-01vzxudcad] {
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+
+/*.drawer-container {
+    margin: 30px auto;
+    width: 70%;
+}
+
+.k-drawer-container {
+    position: relative;
+    width: 100%;
+}
+
+.custom-toolbar {
+    width: 100%;
+    background-color: #f6f6f6;
+    line-height: 10px;
+    border-bottom: inset;
+    border-bottom-width: 1px;
+    padding: 3px 8px;
+    color: #656565;
+}
+
+.mail-box {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.page ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page li {
+    font-size: 20px;
+    background: 0 0;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-color: rgba(33, 37, 41, 0.125);
+    border-style: solid;
+    line-height: 1.5em;
+    padding: 1.09em .84em 1.23em .84em;
+}
+
+    .page li:last-child {
+        border: 0;
+    }
+
+    .page li h6 {
+        border-bottom: none;
+        padding-bottom: 8px;
+    }*/
+/* _content/BlazorImplementation/Shared/Notification.razor.rz.scp.css */

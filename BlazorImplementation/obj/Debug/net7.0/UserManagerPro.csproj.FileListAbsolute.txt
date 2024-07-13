@@ -1,0 +1,8 @@
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.csproj.AssemblyReference.cache
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.AssemblyInfoInputs.cache
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.AssemblyInfo.cs
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.csproj.CoreCompileInputs.cache
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.RazorAssemblyInfo.cache
+D:\Projects\BlazorImplementation\BlazorImplementation\obj\Debug\net7.0\UserManagerPro.RazorAssemblyInfo.cs

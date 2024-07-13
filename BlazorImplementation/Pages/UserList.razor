@@ -1,0 +1,148 @@
+﻿@page "/UserList"
+@using BlazorImplementation.Models
+@attribute [Authorize(Roles = "Admin")]
+<h3>User List</h3>
+
+<TelerikSplitter Orientation="@SplitterOrientation.Horizontal">
+    <SplitterPanes>
+        <SplitterPane Size="70%" Min="50%" Max="100%" Collapsible="true">
+            <TelerikGrid TItem="UserModel"
+                         Pageable="true" Sortable="true"
+                         FilterMode="@GridFilterMode.FilterMenu"
+                         Resizable="true" Reorderable="true" OnRowClick="@OnRowClickHandler"
+                         PageSize="2" Navigable="true" OnRead="@ReadItems" OnDelete="DeleteHandler" OnCreate="@OpenAddUser" ConfirmDelete="true" @ref="_grid">
+                <GridColumns>
+                    <GridColumn Field=@nameof(UserModel.UserId) Title="User ID" Visible="false" />
+                    <GridColumn Field="@nameof(UserModel.UserName)" Title="Username" />
+                    <GridColumn Field=@nameof(UserModel.FirstName) Title="First Name" />
+                    <GridColumn Field=@nameof(UserModel.LastName) Title="Last Name" />
+                    <GridColumn Field=@nameof(UserModel.DateOfBirth) Title="Date of Birth">
+                        <Template>
+                            @((context as UserModel).DateOfBirth.ToString("dd/MM/yyyy"))
+                        </Template>
+                        <FilterMenuTemplate>
+                            @{
+                                BirthDateFilterMenuTemplateContext = context;
+
+                                ExtendBirthDateFilterDescriptor();
+                            }
+                            <label class="filter-label" for="afterDate">Is After:</label>
+                            <TelerikDatePicker Id="afterDate"
+                                               @bind-Value="@BirthDateAfterRangeDescriptor">
+                            </TelerikDatePicker>
+
+                            <TelerikDropDownList @bind-Value="@BirthDateRangeDescriptor.LogicalOperator"
+                                                 Width="95px"
+                                                 TextField="@nameof(FilterLogicalOperatorDescriptor.Text)"
+                                                 ValueField="@nameof(FilterLogicalOperatorDescriptor.Operator)"
+                                                 Data="@FilterLogicalOperators">
+                                <DropDownListSettings>
+                                    <DropDownListPopupSettings Height="auto"></DropDownListPopupSettings>
+                                </DropDownListSettings>
+                            </TelerikDropDownList>
+
+                            <label class="filter-label" for="beforeDate">Is Before:</label>
+                            <TelerikDatePicker Id="beforeDate"
+                                               @bind-Value="@BirthDateBeforeRangeDescriptor">
+                            </TelerikDatePicker>
+                        </FilterMenuTemplate>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(UserModel.PhoneNumber) Title="Phone Number" />
+                    <GridColumn Field=@nameof(UserModel.Role) Title="Role">
+                        <FilterMenuTemplate>
+                            @{
+                                <div class="filter-values-container">
+                                    @foreach (var category in roles)
+                                    {
+                                        <div>
+                                            <TelerikCheckBox Value="@(GetFilterValues(context.FilterDescriptor).Contains(category))"
+                                                             ValueChanged="@((bool value) => ColumnValueChanged(value, category,nameof(UserModel.Role), context.FilterDescriptor))"
+                                                             Id="@($"name_{category}")">
+                                            </TelerikCheckBox>
+                                            <label for="@($"name_{category}")">
+                                                @category
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </FilterMenuTemplate>
+                    </GridColumn>
+                    <GridCommandColumn Width="180px">
+                        <GridCommandButton Icon="@SvgIcon.EditTools" Command="Edit" OnClick="@((args) => OpenEditUser(args.Item as UserModel))">Edit</GridCommandButton>
+                        @* <GridCommandButton Command="Edit" Icon="@SvgIcon.Pencil" ThemeColor="@ThemeConstants.Button.ThemeColor.Primary">Edit</GridCommandButton> *@
+                        <GridCommandButton Command="Delete" Icon="@SvgIcon.Trash">Delete</GridCommandButton>
+                    </GridCommandColumn>
+                </GridColumns>
+                <GridToolBarTemplate>
+                    <GridCommandButton Command="Add" Icon="@SvgIcon.Plus" OnClick="OpenAddUser">Add User</GridCommandButton>
+                </GridToolBarTemplate>
+            </TelerikGrid>
+        </SplitterPane>
+        <SplitterPane Collapsible="true">
+            <p style="@(isUserFormOpen ? "display: none;" : "display: block; color: #f358ff; margin-top:19%;")" class="text-center">
+                Please select a user to edit Or Click on Add button to add
+            </p>
+            <div id="myModal" style="@(isUserFormOpen ? "display: block;" : "display: none;")">
+                <div class="modal-content">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 class="px-3 pt-2">@dialogTitle</h3>
+                        <p class="close px-3 pt-2" @onclick="CancelUserForm">&times;</p>
+                    </div>
+                    <AddEditUser User="selectedUser" OnSave="SaveUser" OnCancel="CancelUserForm"></AddEditUser>
+                </div>
+            </div>
+        </SplitterPane>
+    </SplitterPanes>
+</TelerikSplitter>
+
+    @* @if (isUserFormOpen)
+{
+    <TelerikWindow @ref="dialogRef" Centered="true" @bind-Visible="isUserFormOpen" @Resizable="false" Modal="true" CloseOnOverlayClick="true">
+        <WindowActions>
+        <WindowAction Name="Close" Hidden="false" OnClick="CancelUserForm"/> 
+        </WindowActions>
+        <WindowTitle>@dialogTitle</WindowTitle>
+        <WindowContent>
+            <AddEditUser User="selectedUser" OnSave="SaveUser" OnCancel="CancelUserForm"></AddEditUser>
+        </WindowContent>
+    </TelerikWindow>
+}
+ *@
+
+        <style>
+    .modal {
+        display: none;
+        width: 100%;
+        height: 100%;
+        /* overflow: auto; */
+/*         background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4); */
+/*         padding-top: 60px;
+        padding-left: 140px; */
+    }
+/* 
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        height: 70%;
+        overflow: scroll;
+    } */
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        </style>
