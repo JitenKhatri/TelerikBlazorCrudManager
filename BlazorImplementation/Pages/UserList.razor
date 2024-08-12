@@ -89,7 +89,7 @@
                         <h3 class="px-3 pt-2">@dialogTitle</h3>
                         <p class="close px-3 pt-2" @onclick="CancelUserForm">&times;</p>
                     </div>
-                    <AddEditUser User="selectedUser" OnSave="SaveUser" OnCancel="CancelUserForm"></AddEditUser>
+                    <AddEditUser User="selectedUser" OnSave="SaveUser" OnCancel="CancelUserForm" @ref="AddEditUserRef"></AddEditUser>
                 </div>
             </div>
         </SplitterPane>

@@ -103,14 +103,17 @@ namespace BlazorImplementation.Pages
                 Password = user.Password,
                 ConfirmPassword = user.Password,
                 PhoneNumber = user.PhoneNumber,
-                Role = user.Role
+                Role = user.Role,
+                CityId = user.CityId,
+                CountryId = user.CountryId
             };
+            AddEditUserRef.OnCountrySelect(user.CountryId);
             dialogTitle = "Edit User";
             isUserFormOpen = true;
         }
 
         public void OnRowClickHandler(GridRowClickEventArgs eventArgs)
-        {
+         {
             var user = eventArgs.Item as UserModel;
             selectedUser = new RegisterFormModel
             {
@@ -122,8 +125,11 @@ namespace BlazorImplementation.Pages
                 Password = user.Password,
                 ConfirmPassword = user.Password,
                 PhoneNumber = user.PhoneNumber,
-                Role = user.Role
+                Role = user.Role,
+                CountryId = user.CountryId,
+                CityId = user.CityId
             };
+            AddEditUserRef.OnCountrySelect(user.CountryId);
             dialogTitle = "Edit User";
             isUserFormOpen = true;
         }

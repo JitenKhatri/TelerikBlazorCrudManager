@@ -26,7 +26,7 @@ namespace BlazorImplementation.Shared
         [Inject]
         public IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
-        public List<string> Roles = new List<string>() { "Admin", "Customer" };
+        public List<string> Roles = new List<string>() { "Admin", "User" };
 
         public bool HidePassword { get; set; } = true;
         public bool HideConfirmPassword { get; set; } = true;
@@ -67,7 +67,7 @@ namespace BlazorImplementation.Shared
             return response;
         }
 
-        private void OnCountrySelect(long countryId)
+        public void OnCountrySelect(long countryId)
         {
             User.CountryId = countryId;
             if (countryId != null && countryId != 0)
